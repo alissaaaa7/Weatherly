@@ -1,0 +1,352 @@
+:root {
+  --bg-light: #f0f4f8;
+  --text-light: #1f2937;
+  --accent-light: #3b82f6;
+
+  --bg-dark: #1e1e2f;
+  --text-dark: #f3f4f6;
+  --accent-dark: #60a5fa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  /* Fundo de nuvens por trás */
+  background-image:
+    url('https://www.transparenttextures.com/patterns/clouds.png'),
+    linear-gradient(270deg, #dbefff, #a6c8ff, #f0f7ff, #c9ddff);
+  background-repeat: repeat;
+  background-size: auto, 800% 800%;
+  background-position: top left, 0% 50%;
+  animation: gradientAnimation 25s ease infinite;
+  color: var(--text-light);
+  transition: background 0.5s ease, color 0.5s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: top left, 0% 50%;
+  }
+  50% {
+    background-position: top left, 100% 50%;
+  }
+  100% {
+    background-position: top left, 0% 50%;
+  }
+}
+
+/* Modo escuro com nuvens mais suaves */
+body.dark {
+  background-image:
+    url('https://www.transparenttextures.com/patterns/clouds.png'),
+    linear-gradient(270deg, #0b132b, #1c2541, #1f2a44, #12192c);
+  background-repeat: repeat;
+  background-size: auto, 800% 800%;
+  background-position: top left, 0% 50%;
+  animation: gradientAnimation 30s ease infinite;
+  color: var(--text-dark);
+  filter: brightness(0.7);
+}
+
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  padding: 20px 0;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: var(--accent-light);
+}
+
+body.dark header h1 {
+  color: var(--accent-dark);
+}
+
+#search {
+  margin-top: 10px;
+  padding: 10px 15px;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.current-weather {
+  margin-top: 40px;
+  text-align: center;
+  border: 2px solid var(--accent-light);
+  border-radius: 12px;
+  padding: 30px 40px;  /* Aumentei o padding para ficar maior */
+  max-width: 500px;    /* Limita a largura para não ficar esticada demais */
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(255, 255, 255, 0.85); /* Fundo branco semi-transparente */
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3); /* Sombra azul leve */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Para o modo escuro */
+body.dark .current-weather {
+  background-color: rgba(30, 30, 47, 0.85); /* Fundo escuro semi-transparente */
+  border-color: var(--accent-dark);
+  box-shadow: 0 8px 20px rgba(96, 165, 250, 0.4);
+}
+
+/* Aumentar fonte da temperatura para dar mais destaque */
+#temperature {
+  font-size: 2.5rem;  /* aumentei */
+  font-weight: 900;
+  color: var(--accent-light);
+  transition: color 0.3s ease;
+}
+
+body.dark #temperature {
+  color: var(--accent-dark);
+}
+
+.weather-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.weather-info img {
+  width: 80px;
+  height: 80px;
+}
+
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.toggle-theme {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+#weather-icon {
+  cursor: default;
+  transition: all 1s ease;
+  --sun-color: #FDB813;
+  --moon-color: #f3f4f6;
+}
+
+/* Estado sol - modo claro */
+body:not(.dark) #weather-icon .sun-core {
+  fill: var(--sun-color);
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+body:not(.dark) #weather-icon .sun-rays {
+  stroke: var(--sun-color);
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+body:not(.dark) #weather-icon .moon-mask {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* Estado lua - modo escuro */
+body.dark #weather-icon .sun-core {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+body.dark #weather-icon .sun-rays {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+body.dark #weather-icon .moon-mask {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.additional-info {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Caixa do mesmo tamanho, com layout flex vertical */
+.info-box {
+  background-color: rgba(59, 130, 246, 0.1);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.15);
+  border-radius: 12px;
+  padding: 20px 25px;
+  width: 140px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: pointer; /* muda o cursor para indicar interatividade */
+}
+
+.info-box:hover {
+  background-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 12px 24px rgba(59, 130, 246, 0.3);
+  transform: scale(1.05);
+}
+
+
+
+
+.info-box img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+  filter: invert(100%) brightness(150%) contrast(200%);
+}
+
+/* No modo escuro, mantém branco, mas com sombra leve diferente */
+body.dark .info-box img {
+  filter: brightness(0) saturate(100%) invert(1);
+
+}
+
+/* Ícones com cor bem vibrante e distinta da fonte */
+.info-box:nth-child(1) img { filter: none; } /* manter cor original do ícone temperatura */
+.info-box:nth-child(2) img { filter: hue-rotate(200deg) saturate(200%); } /* azul mais forte */
+.info-box:nth-child(3) img { filter: hue-rotate(30deg) saturate(150%) brightness(1.1); } /* laranja vibrante */
+
+.info-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  margin: 0;
+}
+
+.info-label {
+  margin-top: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-align: center;
+  user-select: none;
+}
+
+/* Modo escuro */
+body.dark .info-box {
+  background-color: rgba(96, 165, 250, 0.15);
+  box-shadow: 0 4px 10px rgba(96, 165, 250, 0.3);
+}
+
+body.dark .info-value {
+  color: var(--accent-dark);
+}
+
+body.dark .info-label {
+  color: var(--text-dark);
+}
+
+body.dark .info-box img {
+  filter: drop-shadow(0 0 3px rgba(0,0,0,0.3));
+}
+
+/* Ajuste nos filtros para modo escuro */
+body.dark .info-box:nth-child(2) img { filter: hue-rotate(200deg) saturate(250%) brightness(1.2); }
+body.dark .info-box:nth-child(3) img { filter: hue-rotate(30deg) saturate(200%) brightness(1.3); }
+
+.search-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#search {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#search:focus {
+  border-color: var(--accent-light);
+  box-shadow: 0 0 8px var(--accent-light);
+}
+
+#searchButton {
+  background-color: var(--accent-light);
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#searchButton:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+#searchButton svg {
+  color: white;
+}
+
+/* Modo escuro */
+body.dark #search {
+  border-color: #555;
+  background-color: #2a2a44;
+  color: var(--text-dark);
+}
+
+body.dark #search::placeholder {
+  color: #aaa;
+}
+
+body.dark #search:focus {
+  border-color: var(--accent-dark);
+  box-shadow: 0 0 8px var(--accent-dark);
+}
+
+body.dark #searchButton {
+  background-color: var(--accent-dark);
+}
+
+body.dark #searchButton:hover {
+  background-color: #3b82f6;
+}
