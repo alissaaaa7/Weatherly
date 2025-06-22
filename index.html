@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weatherly | Tempo Atual</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="toggle-theme" id="toggleTheme">🌓</div>
+
+  <header>
+    <div class="container">
+      <h1>Weatherly</h1>
+      <div class="search-wrapper">
+  <form class="search-wrapper" id="searchForm">
+  <input type="text" id="search" placeholder="Digite uma cidade..." />
+  <button type="submit" id="searchButton">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="7" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  </button>
+</form>
+    </div>
+</div>
+  </header>
+
+  <main class="container">
+    <section class="current-weather">
+      <h2>Tempo agora em <span id="city">Sua cidade</span></h2>
+      <div class="weather-info">
+        <img id="weather-icon" src="data:image/svg+xml;utf8,%3Csvg%20id%3D%22weather-icon%22%20viewBox%3D%220%200%2064%2064%22%20width%3D%2280%22%20height%3D%2280%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20aria-label%3D%22%C3%8Dcone%20do%20clima%22%20role%3D%22img%22%3E%0A%20%20%3Ccircle%20class%3D%22sun-core%22%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2214%22%20fill%3D%22%23FDB813%22%3E%3C%2Fcircle%3E%0A%20%20%3Cg%20class%3D%22sun-rays%22%20stroke%3D%22%23FDB813%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%3E%0A%20%20%20%20%3Cline%20x1%3D%2232%22%20y1%3D%224%22%20x2%3D%2232%22%20y2%3D%2214%22%3E%3C%2Fline%3E%0A%20%20%20%20%3Cline%20x1%3D%2232%22%20y1%3D%2250%22%20x2%3D%2232%22%20y2%3D%2260%22%3E%3C%2Fline%3E%0A%20%20%20%20%3Cline%20x1%3D%224%22%20y1%3D%2232%22%20x2%3D%2214%22%20y2%3D%2232%22%3E%3C%2Fline%3E%0A%20%20%20%20%3Cline%20x1%3D%2250%22%20y1%3D%2232%22%20x2%3D%2260%22%20y2%3D%2232%22%3E%3C%2Fline%3E%0A%20%20%20%20%3Cline%20x1%3D%2212%22%20y1%3D%2212%22%20x2%3D%2220%22%20y2%3D%2220%22%3E%3C%2Fline%3E%0A%20%20%20%20%3Cline%20x1%3D%2244%22%20y1%3D%2244%22%20x2%3D%2252%22%20y2%3D%2252%22%3E%3C%2Fline%3E%0A%20%20%20%20%3Cline%20x1%3D%2212%22%20y1%3D%2252%22%20x2%3D%2220%22%20y2%3D%2244%22%3E%3C%2Fline%3E%0A%20%20%20%20%3Cline%20x1%3D%2244%22%20y1%3D%2220%22%20x2%3D%2252%22%20y2%3D%2212%22%3E%3C%2Fline%3E%0A%20%20%3C%2Fg%3E%0A%20%20%3Ccircle%20class%3D%22moon-mask%22%20cx%3D%2240%22%20cy%3D%2224%22%20r%3D%2214%22%20fill%3D%22%231e1e2f%22%3E%3C%2Fcircle%3E%0A%3C%2Fsvg%3E%0A" alt="Ícone do clima" />
+        <div>
+          <div class="main-temperature-box">
+                <p id="temperature">--°C</p>
+         </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <div class="additional-info">
+  <div class="info-box">
+    <img src="https://img.icons8.com/ios-filled/48/ec4401/temperature.png" alt="Sensação térmica" />
+    <p class="info-value" id="feels-like">--°C</p>
+    <p class="info-label">Sensação térmica</p>
+  </div>
+  <div class="info-box">
+    <img src="https://img.icons8.com/pulsar-line/48/9c9ca0/humidity.png" alt="Umidade" />
+    <p class="info-value" id="humidity">--%</p>
+    <p class="info-label">Umidade</p>
+  </div>
+  <div class="info-box">
+    <img src="https://img.icons8.com/ios-filled/48/ffffff/cloud.png" alt="Condição" />
+    <p class="info-value" id="condition">--</p>
+    <p class="info-label">Condição</p>
+  </div>
+  </div>
+
+
+  <footer>
+    <p>Feito com ☁️ por Alissa & Guilherme | Weatherly</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
